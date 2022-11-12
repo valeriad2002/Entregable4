@@ -1,26 +1,53 @@
-import React, { useReducer } from 'react';
+import React from "react";
 
 const Pherson = ({ person, selectUser, deletUser}) => {
-    return (
-        <div>
-            {person.map(user => (
-                <ul key={user.id}>
 
-                    <li>
-                        <h3>Nombre del usuario: {user.first_name}</h3>
-                        <div><b>Apellido del usuario: </b>{user.last_name} </div>
-                        <div><b> Birthay: </b>{user.bhirthay} </div>
-                        <div><b>email: </b>{user.email} </div>
-                        <div><b>Password: </b>{user.password} </div>
-                        <button onClick={()=>selectUser(user)}>select</button>
-                        <button onClick={() => deletUser(user. id)}>Delet</button>
 
-                    </li>
-                 </ul>
-            ))}
+  return (
+    <div className="card_container">
+      {person.map((user) => (
+        <div className="card" key={user.id}>
+          <img src="./image/user.svg" alt="user" className="user_icon" />
+          <h3>
+            {" "}
+            <b> Name:</b> {user.first_name}
+          </h3>
+          <div>
+            <h3>
+              <b> Last Name:</b>
+              {user.last_name}{" "}
+            </h3>
+          </div>
+          <div>
+            <h3>
+              <b>Birthay:</b>
+              {user.birthday}{" "}
+            </h3>
+          </div>
+          <div>
+            <h3>
+              <b>email:</b>
+              {user.email}{" "}
+            </h3>
+          </div>
+          <div>
+            <h3>
+              <b>Password:</b>
+              {user.password}{" "}
+            </h3>
+          </div>
+          <div className="btn_container">
+            <button onClick={selectUser(user)} className="btn_edit">
+              <img src="./image/bxs-edit-alt.svg" alt="edit" />
+            </button>
+            <button onClick={() => deletUser(user.id)} className="btn_delte">
+              <img src="./image/bx-trash.svg" alt="delete" />
+            </button>
+          </div>
         </div>
-    ); 
+      ))}
+    </div>
+  );
 };
 
 export default Pherson;
-
