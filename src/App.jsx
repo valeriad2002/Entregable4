@@ -2,11 +2,12 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import axios from "axios";
 import Pherson from "./Components/Pherson";
-import RegusterPherson from "./Components/RegusterPherson";
+import RegusterPherson from "./Components/RegisterPherson";
 
 function App() {
-  const [person, setpherson] = useState([]);
+  const [pherson, setpherson] = useState([]);
   const [selctUser, setselctUser] = useState(null);
+  const [show, setShow] = useState(false);
   useEffect(() => {
     axios
       .get("https://users-crud1.herokuapp.com/users/")
@@ -16,11 +17,10 @@ function App() {
     axios
       .get("https://users-crud1.herokuapp.com/users/")
       .then((res) => setpherson(res.data));
-    
   };
   const selectUser = (user) => {
     setselctUser(user);
-    showForm
+    setShow(true);
   };
   const delet = (user) => setselctUser(null);
   const deletUser = (id) => {
@@ -29,7 +29,6 @@ function App() {
       .then(() => getuser());
   };
   // funcion de aparicion de registro
-  const [show, setShow] = useState(false);
   const showForm = (e) => {
     e.preventDefault();
     setShow(!show);
@@ -40,7 +39,11 @@ function App() {
       <div className="container">
         <div className="nabvar">
           <h1>Users</h1>
-          <button onClick={showForm}> <b className="mas">+</b><b> New User</b></button>
+          <button onClick={showForm}>
+            {" "}
+            <b className="mas">+</b>
+            <b> New User</b>
+          </button>
         </div>
         {show && (
           <RegusterPherson
@@ -51,7 +54,7 @@ function App() {
           />
         )}
         <Pherson
-          person={person}
+          pherson={pherson}
           selectUser={selectUser}
           deletUser={deletUser}
         />

@@ -1,11 +1,11 @@
 import React from "react";
 
-const Pherson = ({ person, selectUser, deletUser}) => {
+const Pherson = ({ pherson, selectUser, deletUser}) => {
 
 
   return (
     <div className="card_container">
-      {person.map((user) => (
+      {pherson.map((user) => (
         <div className="card" key={user.id}>
           <img src="./image/user.svg" alt="user" className="user_icon" />
           <h3>
@@ -37,7 +37,7 @@ const Pherson = ({ person, selectUser, deletUser}) => {
             </h3>
           </div>
           <div className="btn_container">
-            <button onClick={selectUser(user)} className="btn_edit">
+            <button onClick={()=>{selectUser(user)}} className="btn_edit">
               <img src="./image/bxs-edit-alt.svg" alt="edit" />
             </button>
             <button onClick={() => deletUser(user.id)} className="btn_delte">

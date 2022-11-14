@@ -7,7 +7,6 @@ const RegusterPherson = ({ getuser, selctUser, delet,showForm }) => {
   useEffect(() => {
     if (selctUser) {
       reset(selctUser);
-      //console.log("cambio");
     } else {
       reset({
         email: "",
@@ -62,7 +61,7 @@ const RegusterPherson = ({ getuser, selctUser, delet,showForm }) => {
           <label htmlFor="birthday">Birthay</label>
           <input {...register("birthday")} type="date" id="birthday" />
         </div>
-        <button type="submit">Submit</button>
+        <button type="submit" >Submit</button>
       </form>
     </div>
   );
